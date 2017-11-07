@@ -1,0 +1,43 @@
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+
+      <h1>Assignment 02 - Data Bidings</h1>
+      <hr />
+
+      <h3>Assignment Description:</h3>
+      <ol>
+        <li>Add a Input field which updates a property ('username') via Two-Way-Binding</li>
+        <li>Output the username property via String Interpolation (in a paragraph below the input)</li>
+        <li>Add a button which may only be clicked if the username is NOT an empty string</li>
+        <li>Upon clicking the button, the username should be reset to an empty string</li>
+      </ol>
+      <hr />
+
+      <h3>Solution:</h3>
+
+      <form id="assigment2Form">
+        <div class="form-group">
+          <label for="usernameInput">Username:</label>
+          <input id="usernameInput" class="form-control" type="text" name="username" placeholder="Enter your username"
+            [(ngModel)]="username" />
+        </div>
+
+        <div class="form-group">
+          <p>Entered username: {{username}}</p>
+        </div>
+
+        <div class="form-group">
+          <button type="button" class="btn btn-primary"
+            [disabled]="isUsernameEmpty()"
+            (click)="resetUsername()">
+
+            Reset Username
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

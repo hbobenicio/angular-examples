@@ -1,2 +1,31 @@
+
+<form id="serversForm">
+
+  <!-- Updating the model with Event Biding -->
+  <!-- <div class="form-group">
+    <label for="serverName1">Server Name (Event Biding): </label>
+    <input id="serverName1" type="text" class="form-control" name="serverName1"
+      (input)="onServerNameInput($event)">
+  </div> -->
+
+  <!-- Updating the model with 2-way Data Biding -->
+  <div class="form-group">
+    <label for="serverName2">Server Name (Two Way Biding): </label>
+    <input id="serverName2" type="text" class="form-control" name="serverName2"
+      [(ngModel)]="serverName">
+  </div>
+
+  <div class="form-group">
+    <button class="btn btn-primary"
+      [disabled]="!allowNewServers" (click)="onCreateServer()">
+
+      Add Server
+    </button>
+  </div>
+</form>
+
+<!-- <p>{{allowNewServers}}</p> -->
+<p>{{serverCreationStatus}}</p>
+
 <app-server></app-server>
 <app-server></app-server>
