@@ -1,0 +1,14 @@
+<div id="game-control">
+  <header><h3>Game Control</h3></header>
+  <button class="btn btn-primary" (click)="onStartGame()" [disabled]="gameStarted">Start</button>
+  <button class="btn btn-danger" (click)="onStopGame()" [disabled]="!gameStarted">Stop</button>
+
+  <div class="row" *ngFor="let number of numbers">
+    <div class="col-xs-6">
+      <app-odd [number]="number"></app-odd>
+    </div>
+    <div class="col-xs-6">
+      <app-even [number]="number"></app-even>
+    </div>
+  </div>
+</div>
