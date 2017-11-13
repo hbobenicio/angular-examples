@@ -1,16 +1,22 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
+import { Recipe } from './recipe.model';
 
 @Component({
   selector: 'app-recipes',
   templateUrl: './recipes.component.html',
-  styleUrls: ['./recipes.component.css'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./recipes.component.css']
 })
 export class RecipesComponent implements OnInit {
+  currentRecipe : Recipe;
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onSelectRecipe(recipe: Recipe) {
+    this.currentRecipe = recipe;
   }
 
 }
