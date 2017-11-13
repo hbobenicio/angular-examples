@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>Todo App</h1>
+      <hr>
+
+      <app-todo *ngFor="let todo of model.todoList"
+        [todo]="todo"
+        (todoChanged)="changeTodo($event)">
+      </app-todo>
+
+    </div>
+  </div>
+</div>

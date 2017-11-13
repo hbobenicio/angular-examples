@@ -1,0 +1,11 @@
+<div class="todo-item input-group">
+  <span class="input-group-addon">
+    <input type="checkbox"
+      [checked]="todo.done"
+      (click)="onToggleTodoStatus()">
+  </span>
+  <input type="text" class="form-control"
+    [ngClass]="{'done': todo.done}"
+    [disabled]="todo.done"
+    [value]="todo.text">
+</div>
