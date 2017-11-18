@@ -1,0 +1,15 @@
+<app-panel [title]="'/login'">
+  <form>
+    <div class="form-group">
+      <label for="emailInput">Email:</label>
+      <input id="emailInput" type="email" class="form-control" placeholder="Email">
+    </div>
+    <div class="form-group">
+      <label for="senhaInput">Senha:</label>
+      <input id="senhaInput" type="password" class="form-control" placeholder="Senha">
+    </div>
+    <div class="text-center">
+      <button type="button" class="btn btn-primary" (click)="onLogar()">Logar</button>
+    </div>
+  </form>
+</app-panel>
