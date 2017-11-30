@@ -1,0 +1,10 @@
+<app-header (routeChanged)="changeRoute($event)"></app-header>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <app-recipes *ngIf="currentRoute === Route.RECIPES"></app-recipes>
+      <app-shopping-list *ngIf="currentRoute === Route.SHOPPING_LIST"></app-shopping-list>
+    </div>
+  </div>
+</div>
