@@ -1,12 +1,20 @@
-import { Directive, OnInit, Renderer2, ElementRef, HostListener, HostBinding } from '@angular/core';
+import { Directive, OnInit, Renderer2, ElementRef, HostListener, HostBinding, Input } from '@angular/core';
 
 @Directive({
   selector: '[appBetterHighlight]'
 })
 export class BetterHighlightDirective implements OnInit {
+  @Input() defaultColor: string = 'black';
+  @Input() defaultBgColor: string = 'transparent';
+  @Input() defaultFontWeight: string = 'normal';
+
+  @Input() highlightColor: string = 'white';
+  @Input() highlightBgColor: string = 'blue';
+  @Input() highlightFontWeight: string = 'bold';
+
   // This string must match the path to the property starting from the
   // elementRef.nativeElement object!
-  @HostBinding('style.fontWeight') fontWeight: string;
+  @HostBinding('style.fontWeight') fontWeight: string = this.defaultFontWeight;
 
   constructor(private elementRef: ElementRef, private renderer: Renderer2) { }
 
@@ -20,14 +28,14 @@ export class BetterHighlightDirective implements OnInit {
   }
 
   @HostListener('mouseenter') mouseover(eventData: Event) {
-    this.renderer.setStyle(this.elementRef.nativeElement, 'background-color', 'blue');
-    this.renderer.setStyle(this.elementRef.nativeElement, 'color', 'white');
-    this.fontWeight = 'bold';
+    this.renderer.setStyle(this.elementRef.nativeElement, 'background-color', this.highlightBgColor);
+    this.renderer.setStyle(this.elementRef.nativeElement, 'color', this.highlightColor);
+    this.fontWeight = this.highlightFontWeight;
   }
 
   @HostListener('mouseleave') mouseleave(eventData: Event) {
-    this.renderer.setStyle(this.elementRef.nativeElement, 'background-color', 'transparent');
-    this.renderer.setStyle(this.elementRef.nativeElement, 'color', 'black');
-    this.fontWeight = 'normal';
+    this.renderer.setStyle(this.elementRef.nativeElement, 'background-color', this.defaultBgColor);
+    this.renderer.setStyle(this.elementRef.nativeElement, 'color', this.defaultColor);
+    this.fontWeight = this.defaultFontWeight;
   }
 }
