@@ -1,0 +1,9 @@
+<div class="component">
+  <header>
+    <h2>Todo List</h2>
+  </header>
+
+  <ul>
+    <app-todo-item *ngFor="let todo of todoList" [todo]="todo"></app-todo-item>
+  </ul>
+</div>
