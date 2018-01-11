@@ -5,7 +5,7 @@ import { StoreModule } from '@ngrx/store';
 import { AppComponent } from './app.component';
 import { CounterComponent } from './counter/counter.component';
 
-import * as CounterReducer from './counter/counter.reducers';
+import { counterFeature } from './counter/ngrx/counter.feature';
 
 @NgModule({
   declarations: [
@@ -16,7 +16,9 @@ import * as CounterReducer from './counter/counter.reducers';
     BrowserModule,
 
     // NgRx State Management Module
-    StoreModule.forRoot({counterReducer: CounterReducer.reducer})
+    StoreModule.forRoot({
+      ...counterFeature
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
