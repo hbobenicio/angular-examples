@@ -1,0 +1,31 @@
+.panel {
+  margin: 15px;
+}
+
+label {
+  margin-right: 15px;
+}
+
+.red {
+  color: red;
+}
+
+.green {
+  color: lime;
+}
+
+.orange {
+  color: orange;
+}
+
+.invalid-heading {
+  color: orange;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.form-data {
+  margin-left: 10px;
+}

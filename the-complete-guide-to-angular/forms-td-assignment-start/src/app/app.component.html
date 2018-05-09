@@ -1,0 +1,98 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <!-- Add a Form with the following Inputs (and Validators)
+           1) Mail address (should not be empty and should be an email address)
+           2) A Dropdown which allows the user to select from three different Subscriptions ("Basic", "Advanced", "Pro")
+              Set "Advanced" as Default
+           3) A Password field (should not be empty)
+           4) A Submit Button
+
+           Display a warning message if the Form is invalid AND was touched. Display a warning message below each input if it's invalid.
+
+           Upon submitting the form, you should simply print the Value of the Form to the Console.
+           Optionally, display it in your template.
+      -->
+
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            My Awesome Template-Driven Form
+            <span class="invalid-heading" *ngIf="!awesomeForm.valid">(invalid)</span>
+            <span class="green" *ngIf="awesomeForm.valid">(valid)</span>
+          </h3>
+        </div>
+        <div class="panel-body">
+          <form (ngSubmit)="onSubmit()" #awesomeForm="ngForm">
+            <!-- Email -->
+            <div class="form-group">
+              <app-asterisk></app-asterisk>
+              <label for="emailInput">Email:</label>
+              <input id="emailInput" type="text" placeholder="Your email here..."
+                name="email" ngModel #emailElement="ngModel"
+                required email>
+              <span class="help-block red" *ngIf="!emailElement.valid && emailElement.touched">
+                Email is invalid!
+              </span>
+            </div>
+
+            <!-- Subscriptions -->
+            <div class="form-group">
+              <app-asterisk></app-asterisk>
+              <label for="subscriptionDropdown">Subscription:</label>
+              <select id="subscriptionDropdown"
+                name="subscription" [ngModel]="defaultSubscription.value" #subscriptionElement="ngModel">
+                <option *ngFor="let option of subscriptionOptions"
+                  [value]="option.value">
+                  {{option.label}}
+                </option>
+              </select>
+              <span class="help-block red" *ngIf="!subscriptionElement.valid && subscriptionElement.touched">
+                Email is invalid!
+              </span>
+            </div>
+
+            <!-- Password -->
+            <div class="form-group">
+              <app-asterisk></app-asterisk>
+              <label for="passwordInput">Password:</label>
+              <input id="passwordInput" type="password" placeholder="Your password here..."
+                name="password" ngModel #passwordElement="ngModel"
+                required>
+              <span class="help-block red" *ngIf="!passwordElement.valid && passwordElement.touched">
+                Password is invalid!
+              </span>
+            </div>
+
+            <button id="submitButton" type="submit" class="btn btn-primary"
+              [disabled]="!awesomeForm.valid">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="submitted">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="panel-title">My Awesome Form Data</div>
+        </div>
+        <div class="panel-body">
+          <div class="form-field">
+            <span class="bold">Email:</span>
+            <span class="form-data">{{awesomeForm.value.email}}</span>
+          </div>
+          <div class="form-field">
+            <span class="bold">Subscription:</span>
+            <span class="form-data">{{awesomeForm.value.subscription}}</span>
+          </div>
+          <div class="form-field">
+            <span class="bold">Password:</span>
+            <span class="form-data">{{awesomeForm.value.password}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
